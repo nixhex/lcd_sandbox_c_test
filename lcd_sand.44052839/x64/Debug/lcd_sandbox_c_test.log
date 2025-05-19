@@ -1,0 +1,6 @@
+﻿  lcd.c
+C:\Users\fevin\source\repos\lcd_sandbox_c_test\lcd.c(9,65): warning C4554: '>>': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\fevin\source\repos\lcd_sandbox_c_test\lcd.c(18,16): warning C4554: '>>': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\fevin\source\repos\lcd_sandbox_c_test\lcd.c(50,17): warning C4013: 'strlen' undefined; assuming extern returning int
+C:\Users\fevin\source\repos\lcd_sandbox_c_test\lcd.c(52,20): warning C4018: '<': signed/unsigned mismatch
+  lcd_sandbox_c_test.vcxproj -> C:\Users\fevin\source\repos\lcd_sandbox_c_test\x64\Debug\lcd_sandbox_c_test.exe
