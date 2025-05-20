@@ -1,40 +1,21 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "lcd.h"
+#include "gpioconsts.h"
 #include <string.h>
 
 
 int main(void)
 {
-	char* GPIOs[] = {
-		  "LCD_RS_GPIO_Port",
-		  "LCD_RW_GPIO_Port",
-		  "LCD_DB7_GPIO_Port",
-		  "LCD_DB6_GPIO_Port",
-		  "LCD_DB5_GPIO_Port",
-		  "LCD_DB4_GPIO_Port",
-		  "LCD_DB3_GPIO_Port",
-		  "LCD_DB2_GPIO_Port",
-		  "LCD_DB1_GPIO_Port",
-		  "LCD_DB0_GPIO_Port"
-	};
+	GPIO_TypeDef GPIOs[] = ADM2004D_FL_YBS_GPIOS;
+	GPIO_TypeDef pins[] = ADM2004D_FL_YBS_PINS;
+	LcdCharMap lcdMap[] = ADM2004D_FL_YBS_CHAR_MAP;
 
-	char* pins[] = {
-		  "LCD_RS_Pin",
-		  "LCD_RW_Pin",
-		  "LCD_DB7_Pin",
-		  "LCD_DB6_Pin",
-		  "LCD_DB5_Pin",
-		  "LCD_DB4_Pin",
-		  "LCD_DB3_Pin",
-		  "LCD_DB2_Pin",
-		  "LCD_DB1_Pin",
-		  "LCD_DB0_Pin"
-	};
+	LCD lcd;
+	
+	newLCD(&lcd, lcdMap, GPIOs, pins);
 
-	char* str = "hello!";
-	//printf("sending string \"%s\"\n", str);
-	Write_String(GPIOs, pins, str);
-
+	char* str = "yello, world!";
+	Write_String(&lcd, str, 0, 0);
 	return 0;
 }

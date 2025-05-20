@@ -2,13 +2,29 @@
 #define INC_LCD_H_
 #include <stdint.h>
 #include <stdio.h>
+#include "gpioconsts.h"
 
 #define BIT(x, n) (x >> n & 0b1)
 #define STATE(s) (s == 1 ? "GPIO_PIN_SET" : "GPIO_PIN_RESET")
 #define LCD_MAP_CHAR(ascii, code) { (ascii), (code) }
 #define LCD_MAP_SIZE (sizeof(lcd_map) / sizeof(LcdCharMap))
+#define RS_BIT 9
+#define RW_BIT 8
+#define NUM_ROWS 4
+#define NUM_COLS 20
 
-#define LCD2004_CHAR_MAP {\
+// ST7066U, KS0066, or any HD44780-compatible controller DDE
+#define DDRAM_ROW1_START 0x00
+#define DDRAM_ROW1_END   0x13
+#define DDRAM_ROW2_START 0x40
+#define DDRAM_ROW2_END   0x53
+#define DDRAM_ROW3_START 0x14
+#define DDRAM_ROW3_END   0x27
+#define DDRAM_ROW4_START 0x54
+#define DDRAM_ROW4_END   0x67
+
+// value of the array of structs making up the ascii-to-LCD character map
+#define ADM2004D_FL_YBS_CHAR_MAP {\
 LCD_MAP_CHAR('A', 0x41), LCD_MAP_CHAR('a', 0x61),\
 LCD_MAP_CHAR('B', 0x42), LCD_MAP_CHAR('b', 0x62),\
 LCD_MAP_CHAR('C', 0x43), LCD_MAP_CHAR('c', 0x63),\
@@ -59,15 +75,14 @@ LCD_MAP_CHAR('*', 0x2A),\
 LCD_MAP_CHAR('+', 0x2B),\
 LCD_MAP_CHAR(',', 0x2C),\
 LCD_MAP_CHAR('-', 0x2D),\
-LCD_MAP_CHAR(',', 0x2E),\
+LCD_MAP_CHAR('.', 0x2E),\
 LCD_MAP_CHAR('/', 0x2F),\
 LCD_MAP_CHAR(':', 0x3A),\
 LCD_MAP_CHAR(';', 0x3B),\
 LCD_MAP_CHAR('<', 0x3C),\
 LCD_MAP_CHAR('=', 0x3D),\
 LCD_MAP_CHAR('>', 0x3E),\
-LCD_MAP_CHAR('>', 0x3F),\
-LCD_MAP_CHAR('?', 0x3E),\
+LCD_MAP_CHAR('?', 0x3F),\
 LCD_MAP_CHAR('@', 0x40),\
 LCD_MAP_CHAR('[', 0x5B),\
 LCD_MAP_CHAR(']', 0x5D),\
@@ -79,6 +94,33 @@ LCD_MAP_CHAR('|', 0x7C),\
 LCD_MAP_CHAR('}', 0x7D),\
 }\
 
+#define ADM2004D_FL_YBS_GPIOS {\
+LCD_RS_GPIO_Port,\
+LCD_RW_GPIO_Port,\
+LCD_DB7_GPIO_Port,\
+LCD_DB6_GPIO_Port,\
+LCD_DB5_GPIO_Port,\
+LCD_DB4_GPIO_Port,\
+LCD_DB3_GPIO_Port,\
+LCD_DB2_GPIO_Port,\
+LCD_DB1_GPIO_Port,\
+LCD_DB0_GPIO_Port\
+}\
+
+#define ADM2004D_FL_YBS_PINS {\
+LCD_RS_Pin,\
+LCD_RW_Pin,\
+LCD_DB7_Pin,\
+LCD_DB6_Pin,\
+LCD_DB5_Pin,\
+LCD_DB4_Pin,\
+LCD_DB3_Pin,\
+LCD_DB2_Pin,\
+LCD_DB1_Pin,\
+LCD_DB0_Pin\
+}\
+
+
 #define NUM_CMD_BITS 10
 #define MAX_GPIO_LEN 20
 #define MAX_PIN_LEN 2
@@ -88,10 +130,22 @@ typedef struct {
     uint8_t lcd_code;  // Corresponding LCD character code
 } LcdCharMap;
 
-void Send_CMD(char** GPIOs, char** pins, uint16_t cmd);
+typedef char* GPIO_TypeDef;
+
+typedef struct {
+    LcdCharMap *charMap;
+    GPIO_TypeDef *GPIOs;
+    GPIO_TypeDef *pins;
+} LCD;
+
+void newLCD(LCD *lcd, LcdCharMap charMap[], GPIO_TypeDef GPIOS[], GPIO_TypeDef pins[]);
+void Send_CMD(LCD* lcd, uint16_t cmd);
 void printBinary(uint16_t cmd);
-void Write_Char_DDRAM(char** GPIOs, char** pins, uint8_t ch);
-void Write_String(char** GPIOs, char** pins, char* str);
+void Write_Char_DDRAM(LCD* lcd, char ch);
+void Write_String(LCD* lcd, char* str, uint8_t row, uint8_t col);
+void Move_Cursor(int row, int col);
+//void Set_Control(uint8_t control);
+
 uint8_t GetLcdCode(char ch);
 
 #endif

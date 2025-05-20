@@ -136,6 +136,7 @@
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="gpioconsts.h" />
     <ClInclude Include="lcd.h" />
   </ItemGroup>
   <ItemGroup>
