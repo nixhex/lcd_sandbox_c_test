@@ -53,3 +53,26 @@ dkms.conf
 
 *.vsidx
 *.opendb
+
+# Build artifacts
+x64/
+*.obj
+*.i
+*.pdb
+*.tlog
+*.ipch
+*.db
+*.idb
+
+# VS hidden files
+.vs/
+*.VC.db
+*.sdf
+
+# NuGet/Package management
+packages/
+_packages/
+*.nupkg
+
+# Temporary or unintended files
+lcd_sand.*/

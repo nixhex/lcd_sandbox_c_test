@@ -1,6 +1,6 @@
 ﻿#include "lcd.h"
-#define MIN(x, y) (x > y ? y : x)
-#define MAX(x, y) (x > y ? x : y)
+#define MIN(x, y) (((x) > (y)) ? (y) : (x))
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
 
 const LcdCharMap lcd_map[] = ADM2004D_FL_YBS_CHAR_MAP;
 

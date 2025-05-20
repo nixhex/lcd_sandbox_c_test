@@ -120,7 +120,6 @@ LCD_DB1_Pin,\
 LCD_DB0_Pin\
 }\
 
-
 #define NUM_CMD_BITS 10
 #define MAX_GPIO_LEN 20
 #define MAX_PIN_LEN 2
