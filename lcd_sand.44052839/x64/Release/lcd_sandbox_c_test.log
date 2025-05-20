@@ -1,8 +1,0 @@
-﻿  lcd.c
-C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\lcd.c(18,75): warning C4554: '>>': check operator precedence for possible error; use parentheses to clarify precedence
-C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\lcd.c(27,16): warning C4554: '>>': check operator precedence for possible error; use parentheses to clarify precedence
-C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\lcd.c(58,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\lcd.c(56,17): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'uint32_t', possible loss of data
-  main.c
-  Generating Code...
-  lcd_sandbox_c_test.vcxproj -> C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\x64\Release\lcd_sandbox_c_test.exe

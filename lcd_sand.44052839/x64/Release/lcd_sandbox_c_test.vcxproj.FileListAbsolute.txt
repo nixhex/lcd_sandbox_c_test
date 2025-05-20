@@ -1,3 +1,0 @@
-C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\lcd_sand.44052839\x64\Release\lcd_sandbox_c_test.vcxproj.MdMergeInputs.cache
-C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\lcd_sand.44052839\x64\Release\lcd_sandbox_c_test.vcxproj.cppwinrt_plat.cache
-C:\Users\Devin\source\repos\nixhex\lcd_sandbox_c_test\lcd_sand.44052839\x64\Release\lcd_sandbox_c_test.vcxproj.cppwinrt_comp.cache
