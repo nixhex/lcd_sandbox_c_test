@@ -92,7 +92,7 @@ LCD_MAP_CHAR('`', 0x60),\
 LCD_MAP_CHAR('{', 0x7B),\
 LCD_MAP_CHAR('|', 0x7C),\
 LCD_MAP_CHAR('}', 0x7D),\
-}\
+}
 
 #define ADM2004D_FL_YBS_GPIOS {\
 LCD_RS_GPIO_Port,\
@@ -105,7 +105,7 @@ LCD_DB3_GPIO_Port,\
 LCD_DB2_GPIO_Port,\
 LCD_DB1_GPIO_Port,\
 LCD_DB0_GPIO_Port\
-}\
+}
 
 #define ADM2004D_FL_YBS_PINS {\
 LCD_RS_Pin,\
@@ -118,7 +118,7 @@ LCD_DB3_Pin,\
 LCD_DB2_Pin,\
 LCD_DB1_Pin,\
 LCD_DB0_Pin\
-}\
+}
 
 #define NUM_CMD_BITS 10
 #define MAX_GPIO_LEN 20
